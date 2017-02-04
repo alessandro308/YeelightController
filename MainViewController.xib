@@ -8,56 +8,29 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainViewController" customModule="YeelightController" customModuleProvider="target">
             <connections>
+                <outlet property="colorBtn" destination="y3G-ua-MTw" id="o2C-Sf-jiu"/>
                 <outlet property="lumBar" destination="0GT-Fd-lfZ" id="dhl-nN-Hwk"/>
                 <outlet property="switchBtn" destination="m7g-s3-uAb" id="2RZ-em-DBZ"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="voiceBtn" destination="CGa-LV-ZWP" id="tIb-al-j9I"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="314"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-js-Zpz">
-                    <rect key="frame" x="196" y="224" width="89" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Accendi" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rhz-of-Anq">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7g-s3-uAb">
-                    <rect key="frame" x="196" y="224" width="89" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Accendi" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GhW-5d-euj">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggle:" target="-2" id="h54-He-bIK"/>
-                    </connections>
-                </button>
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0GT-Fd-lfZ">
-                    <rect key="frame" x="166" y="192" width="148" height="21"/>
+                    <rect key="frame" x="166" y="208" width="148" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wCS-c7-LjJ"/>
                     <connections>
                         <action selector="lumBarChanged:" target="-2" id="bUP-uY-kp9"/>
                     </connections>
                 </slider>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47f-i1-yHY">
-                    <rect key="frame" x="322" y="155" width="96" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="FK6-Cc-yCf"/>
-                </slider>
-                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ueN-Hq-ob2">
-                    <rect key="frame" x="322" y="125" width="96" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="Rlp-6x-UOX"/>
-                </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zVW-vR-SRg">
-                    <rect key="frame" x="76" y="194" width="70" height="17"/>
+                    <rect key="frame" x="76" y="210" width="70" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Luminosità" id="Xjd-fz-ooa">
                         <font key="font" metaFont="system"/>
@@ -76,13 +49,58 @@
                         <action selector="exitBtn:" target="-2" id="ktF-Cv-UhF"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7g-s3-uAb">
+                    <rect key="frame" x="196" y="240" width="89" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Accendi" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GhW-5d-euj">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggle:" target="-2" id="h54-He-bIK"/>
+                    </connections>
+                </button>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3G-ua-MTw">
+                    <rect key="frame" x="218" y="138" width="44" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="colorChanged:" target="-2" id="EtP-UJ-HPX"/>
+                    </connections>
+                </colorWell>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGa-LV-ZWP">
+                    <rect key="frame" x="330" y="266" width="106" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Avvia Voce" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NQ0-bg-vt3">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="voiceBtnPressed:" target="-2" id="XlT-aI-MMu"/>
+                    </connections>
+                </button>
                 <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkv-Bo-wHS">
-                    <rect key="frame" x="9" y="-36" width="67" height="231"/>
+                    <rect key="frame" x="9" y="-27" width="73" height="229"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="Image" id="b4X-NH-4VP"/>
                 </imageView>
             </subviews>
+            <point key="canvasLocation" x="139" y="148"/>
         </customView>
+        <segmentedControl verticalHuggingPriority="750" id="o2s-TX-kbb">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="24"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="LKf-8q-Cfa">
+                <font key="font" metaFont="system"/>
+                <segments>
+                    <segment label="White" width="96"/>
+                    <segment label="Color" width="96" selected="YES" tag="1"/>
+                    <segment label="Flow" width="95"/>
+                    <segment label="Scene"/>
+                </segments>
+            </segmentedCell>
+            <point key="canvasLocation" x="236" y="-96.5"/>
+        </segmentedControl>
     </objects>
     <resources>
         <image name="Image" width="176" height="393"/>

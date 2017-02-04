@@ -14,11 +14,19 @@ struct Proprieties{
     var ct : Int = 0;
     var rgb : Int = 0;
     var power : Bool = false;
+    var hue : Int = 0;
+    var sat : Int = 0;
+    var color_mode : Int = 0;
+    var flowing : Bool = false;
+    var delayoff : Int = 0;
+    var flow_params : [String: Any] = [:];
+    var music_on : Bool = false;
+    var name : String = "";
 }
 
 class Yeelight {
     
-    var proprieties : Proprieties = Proprieties() ;
+    var proprieties : Proprieties = Proprieties();
     let IP: String;
     let port : Int;
     var i = 0; //Message ID, increase by one each message sent
@@ -32,6 +40,7 @@ class Yeelight {
         client = TCPClient(address: self.IP, port: Int32(self.port))
         self.updateProprieties()
     }
+    
     init(ip : String) {
         // Create the object with specific IP, port is set to 55443
         self.IP = ip
@@ -64,8 +73,19 @@ class Yeelight {
         return false
     }
     
+    func set_bright(newBright : Int) -> Bool{
+        if(newBright < 0 || newBright > 100){
+            return false;
+        }
+        if(sendCmd(id: i, method: "set_bright", params: [newBright, "smooth", 500], printMessage: "Luminosità impostata")){
+            self.proprieties.bright = newBright
+            return true
+        }
+        return false
+    }
+    
     func updateProprieties(){
-        let d = sendCmdReply(id: i, method: "get_prop", params: ["power", "bright", "ct", "rgb", "hue", "sat", "color_mode", "flowing", "dalayoff", "flow_params", "music_on", "name"], printMessage: "getProprieties")
+        let d = sendCmdReply(id: i, method: "get_prop", params: ["power", "bright", "ct", "rgb", "hue", "sat", "color_mode", "flowing", "delayoff", "flow_params", "music_on", "name"], printMessage: "getProprieties")
         let res = d["result"] as! [Any]
         if(res[0] as! String == "on"){
             proprieties.power = true
@@ -75,6 +95,25 @@ class Yeelight {
         proprieties.bright = Int((res[1] as! NSString).intValue)
         proprieties.ct = Int((res[2] as! NSString).intValue)
         proprieties.rgb = Int((res[3] as! NSString).intValue)
+        proprieties.hue = Int((res[4] as! NSString).intValue)
+        proprieties.sat = Int((res[5] as! NSString).intValue)
+        proprieties.color_mode = Int((res[6] as! NSString).intValue)
+        proprieties.flowing = Int((res[7] as! NSString).intValue) == 0 ? false : true
+        proprieties.delayoff = Int((res[8] as! NSString).intValue)
+        proprieties.music_on = Int((res[10] as! NSString).intValue) == 1 ? true : false
+        proprieties.name = (res[11] as! NSString) as String
+        print(proprieties)
+    }
+    
+    func set_color(r : Int, g : Int, b : Int) -> Bool{
+        if(!self.proprieties.power){
+            _ = self.switchOn()
+        }
+        if(sendCmd(id: i, method: "set_rgb", params: [r*65536+g*256+b, "smooth", 500], printMessage: "Colore cambiato")){
+            self.proprieties.rgb = r*65536+g*256+b
+            return true
+        }
+        return false
     }
     
     func closeConnection(){
@@ -103,6 +142,7 @@ class Yeelight {
             }
         }
         param = param.substring(to: param.index(before: param.endIndex)) //Remove last comma
+        self.closeConnection()
         switch client.connect(timeout: 2) {
         case .success:
             switch client.send(string: "{\"id\":\(id),\"method\":\"\(method)\",\"params\":[\(param)]}\r\n" ) {
@@ -154,6 +194,7 @@ class Yeelight {
             }
         }
         param = param.substring(to: param.index(before: param.endIndex)) //Remove last comma
+        self.closeConnection()
         switch client.connect(timeout: 2) {
         case .success:
             switch client.send(string: "{\"id\":\(id),\"method\":\"\(method)\",\"params\":[\(param)]}\r\n" ) {
@@ -175,83 +216,8 @@ class Yeelight {
             print(error)
         }
         i=i+1
+        self.closeConnection()
         return [:]
     }
 
 }
-/*
-
-func spegni(){
-    switch client.connect(timeout: 3) {
-    case .success:
-        switch client.send(string: "{\"id\":\(i),\"method\":\"set_power\",\"params\":[\"off\", \"smooth\", 500]}\r\n" ) {
-        case .success:
-            i=i+1
-            guard let data = client.read(1024*10) else { return }
-            
-            if let response = String(bytes: data, encoding: .utf8) {
-                print(response)
-            }
-        case .failure(let error):
-            print(error)
-        }
-        client.close()
-    case .failure(let error):
-        print(error)
-    }
-}
-
-func isPower() -> Bool {
-    switch client.connect(timeout: 3) {
-    case .success:
-        switch client.send(string: "{\"id\":\(i),\"method\":\"get_prop\",\"params\":[\"power\"]}\r\n" ) {
-        case .success:
-            i=i+1
-            guard let data = client.read(1024*10) else { return false;}
-            
-            if let response = String(bytes: data, encoding: .utf8) {
-                guard let data : Data = response.data(using: .utf8) else {return false}
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                let d = json as! [String: Any]
-                let p = d["result"] as! [String]
-                if(p[0] == "on"){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-        case .failure(let error):
-            print(error)
-        }
-        client.close()
-    case .failure(let error):
-        print(error)
-    }
-    return false
-}
-
-func getBright() -> Int {
-    switch client.connect(timeout: 3) {
-    case .success:
-        switch client.send(string: "{\"id\":\(i),\"method\":\"get_prop\",\"params\":[\"bright\"]}\r\n" ) {
-        case .success:
-            i=i+1
-            guard let data = client.read(1024*10) else { return 0}
-            
-            if let response = String(bytes: data, encoding: .utf8) {
-                guard let data : Data = response.data(using: .utf8) else {return 0}
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                let d = json as! [String: Any]
-                guard let p = d["result"] as? [Int] else {return 0}
-                return p[0]
-            }
-        case .failure(let error):
-            print(error)
-        }
-        client.close()
-    case .failure(let error):
-        print(error)
-    }
-    return 0
-}*/
