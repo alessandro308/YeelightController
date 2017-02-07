@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftSocket
 
 struct Proprieties{
     var bright : Int = 0;
@@ -73,9 +72,13 @@ class Yeelight {
         return false
     }
     
-    func set_bright(newBright : Int) -> Bool{
-        if(newBright < 0 || newBright > 100){
-            return false;
+    func set_bright(newBrightP : Int) -> Bool{
+        var newBright = newBrightP
+        if(newBright < 1){
+            newBright = 1
+        }
+        if(newBright > 100){
+            newBright = 100
         }
         if(sendCmd(id: i, method: "set_bright", params: [newBright, "smooth", 500], printMessage: "Luminosità impostata")){
             self.proprieties.bright = newBright

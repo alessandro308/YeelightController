@@ -24,7 +24,7 @@
                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0GT-Fd-lfZ">
                     <rect key="frame" x="166" y="208" width="148" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wCS-c7-LjJ"/>
+                    <sliderCell key="cell" state="on" alignment="left" minValue="1" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wCS-c7-LjJ"/>
                     <connections>
                         <action selector="lumBarChanged:" target="-2" id="bUP-uY-kp9"/>
                     </connections>
@@ -87,20 +87,6 @@
             </subviews>
             <point key="canvasLocation" x="139" y="148"/>
         </customView>
-        <segmentedControl verticalHuggingPriority="750" id="o2s-TX-kbb">
-            <rect key="frame" x="0.0" y="0.0" width="354" height="24"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="LKf-8q-Cfa">
-                <font key="font" metaFont="system"/>
-                <segments>
-                    <segment label="White" width="96"/>
-                    <segment label="Color" width="96" selected="YES" tag="1"/>
-                    <segment label="Flow" width="95"/>
-                    <segment label="Scene"/>
-                </segments>
-            </segmentedCell>
-            <point key="canvasLocation" x="236" y="-96.5"/>
-        </segmentedControl>
     </objects>
     <resources>
         <image name="Image" width="176" height="393"/>

@@ -39,7 +39,7 @@ class MainViewController: NSViewController, NSSpeechRecognizerDelegate {
     
     
     @IBAction func lumBarChanged(_ sender: Any) {
-       _ = bulb.set_bright(newBright: Int(lumBar.intValue))
+       _ = bulb.set_bright(newBrightP: Int(lumBar.intValue))
         
     }
     
@@ -48,7 +48,9 @@ class MainViewController: NSViewController, NSSpeechRecognizerDelegate {
         vc?.commands = ["Luce accenditi",
                         "Luce spegniti",
                         "Stop Riconoscimento Vocale",
-                        "Avvio Riconoscimento Vocale"]
+                        "Avvio Riconoscimento Vocale",
+                        "Incrementa Luminosità",
+                        "Diminuisci Luminosità"]
         vc?.startListening()
     }
     @IBAction func voiceStop(_ sender: Any) {
@@ -72,6 +74,16 @@ class MainViewController: NSViewController, NSSpeechRecognizerDelegate {
         if(command == "Luce spegniti"){
             _ = bulb.switchOff()
         }
+        if(command == "Incrementa Luminosità"){
+            _ = bulb.set_bright(newBrightP:
+                
+                bulb.proprieties.bright + 20)
+            self.lumBar.intValue = Int32(bulb.proprieties.bright)
+        }
+        if(command == "Diminuisci Luminosità"){
+            _ = bulb.set_bright(newBrightP: bulb.proprieties.bright - 20)
+            self.lumBar.intValue = Int32(bulb.proprieties.bright)
+        }
     }
     
     
@@ -84,6 +96,7 @@ class MainViewController: NSViewController, NSSpeechRecognizerDelegate {
         let c = colorBtn.color
         let t = CGFloat(255)
         _ = bulb.set_color(r: Int(c.redComponent*t), g: Int(c.greenComponent*t), b: Int(c.blueComponent*t))
+        self.switchBtn.title = "Spegni"
     }
     
     @IBAction func toggle(_ sender: AnyObject) {
