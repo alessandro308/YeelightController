@@ -92,7 +92,7 @@ class MainViewController: NSViewController, NSSpeechRecognizerDelegate {
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(lastColor(c:)), userInfo: nil, repeats: false)
     }
     
-    func lastColor(c: NSColor){
+    @objc func lastColor(c: NSColor){
         let c = colorBtn.color
         let t = CGFloat(255)
         _ = bulb.set_color(r: Int(c.redComponent*t), g: Int(c.greenComponent*t), b: Int(c.blueComponent*t))
@@ -116,6 +116,6 @@ class MainViewController: NSViewController, NSSpeechRecognizerDelegate {
     
     @IBAction func exitBtn(_ sender: Any) {
         bulb.closeConnection()
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 }

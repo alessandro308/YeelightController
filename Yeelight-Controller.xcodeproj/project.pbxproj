@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D2AA24291FA85B8000036DFD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2AA24271FA85B8000036DFD /* MainMenu.xib */; };
+		D2AA24421FA85B9C00036DFD /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2AA24321FA85B9A00036DFD /* MainViewController.xib */; };
+		D2AA24431FA85B9C00036DFD /* Yeelight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24331FA85B9A00036DFD /* Yeelight.swift */; };
+		D2AA24441FA85B9C00036DFD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D2AA24341FA85B9A00036DFD /* README.md */; };
+		D2AA24451FA85B9C00036DFD /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D2AA24351FA85B9A00036DFD /* Base.lproj */; };
+		D2AA24461FA85B9C00036DFD /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24361FA85B9B00036DFD /* ytcpsocket.c */; };
+		D2AA24471FA85B9C00036DFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24381FA85B9B00036DFD /* MainViewController.swift */; };
+		D2AA24481FA85B9C00036DFD /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = D2AA24391FA85B9B00036DFD /* preview.png */; };
+		D2AA24491FA85B9C00036DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AA243A1FA85B9B00036DFD /* Assets.xcassets */; };
+		D2AA244A1FA85B9C00036DFD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AA243B1FA85B9B00036DFD /* Info.plist */; };
+		D2AA244B1FA85B9C00036DFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA243C1FA85B9B00036DFD /* AppDelegate.swift */; };
+		D2AA244C1FA85B9C00036DFD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D2AA243D1FA85B9B00036DFD /* LICENSE */; };
+		D2AA244D1FA85B9C00036DFD /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA243F1FA85B9B00036DFD /* TCPClient.swift */; };
+		D2AA244E1FA85B9C00036DFD /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24401FA85B9B00036DFD /* Socket.swift */; };
+		D2AA244F1FA85B9C00036DFD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24411FA85B9B00036DFD /* Result.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D2AA24201FA85B8000036DFD /* Yeelight-Controller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yeelight-Controller.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AA24281FA85B8000036DFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D2AA242A1FA85B8000036DFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2AA242B1FA85B8000036DFD /* Yeelight_Controller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yeelight_Controller.entitlements; sourceTree = "<group>"; };
+		D2AA24311FA85B9900036DFD /* Yeelight-Controller-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yeelight-Controller-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2AA24321FA85B9A00036DFD /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		D2AA24331FA85B9A00036DFD /* Yeelight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yeelight.swift; sourceTree = "<group>"; };
+		D2AA24341FA85B9A00036DFD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D2AA24351FA85B9A00036DFD /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = "../../../Download/YeelightController-master/Base.lproj"; sourceTree = "<group>"; };
+		D2AA24361FA85B9B00036DFD /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = "<group>"; };
+		D2AA24371FA85B9B00036DFD /* ytcpsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ytcpsocket.h; sourceTree = "<group>"; };
+		D2AA24381FA85B9B00036DFD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D2AA24391FA85B9B00036DFD /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview.png; sourceTree = "<group>"; };
+		D2AA243A1FA85B9B00036DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Download/YeelightController-master/Assets.xcassets"; sourceTree = "<group>"; };
+		D2AA243B1FA85B9B00036DFD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../Download/YeelightController-master/Info.plist"; sourceTree = "<group>"; };
+		D2AA243C1FA85B9B00036DFD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../Download/YeelightController-master/AppDelegate.swift"; sourceTree = "<group>"; };
+		D2AA243D1FA85B9B00036DFD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		D2AA243E1FA85B9B00036DFD /* YeelightController-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YeelightController-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2AA243F1FA85B9B00036DFD /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		D2AA24401FA85B9B00036DFD /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		D2AA24411FA85B9B00036DFD /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AA241D1FA85B7F00036DFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D2AA24171FA85B7F00036DFD = {
+			isa = PBXGroup;
+			children = (
+				D2AA24221FA85B8000036DFD /* Yeelight-Controller */,
+				D2AA24211FA85B8000036DFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2AA24211FA85B8000036DFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AA24201FA85B8000036DFD /* Yeelight-Controller.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2AA24221FA85B8000036DFD /* Yeelight-Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2AA243C1FA85B9B00036DFD /* AppDelegate.swift */,
+				D2AA243A1FA85B9B00036DFD /* Assets.xcassets */,
+				D2AA24351FA85B9A00036DFD /* Base.lproj */,
+				D2AA243B1FA85B9B00036DFD /* Info.plist */,
+				D2AA243D1FA85B9B00036DFD /* LICENSE */,
+				D2AA24381FA85B9B00036DFD /* MainViewController.swift */,
+				D2AA24321FA85B9A00036DFD /* MainViewController.xib */,
+				D2AA24391FA85B9B00036DFD /* preview.png */,
+				D2AA24341FA85B9A00036DFD /* README.md */,
+				D2AA24411FA85B9B00036DFD /* Result.swift */,
+				D2AA24401FA85B9B00036DFD /* Socket.swift */,
+				D2AA243F1FA85B9B00036DFD /* TCPClient.swift */,
+				D2AA24331FA85B9A00036DFD /* Yeelight.swift */,
+				D2AA243E1FA85B9B00036DFD /* YeelightController-Bridging-Header.h */,
+				D2AA24361FA85B9B00036DFD /* ytcpsocket.c */,
+				D2AA24371FA85B9B00036DFD /* ytcpsocket.h */,
+				D2AA24271FA85B8000036DFD /* MainMenu.xib */,
+				D2AA242A1FA85B8000036DFD /* Info.plist */,
+				D2AA242B1FA85B8000036DFD /* Yeelight_Controller.entitlements */,
+				D2AA24311FA85B9900036DFD /* Yeelight-Controller-Bridging-Header.h */,
+			);
+			path = "Yeelight-Controller";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2AA241F1FA85B7F00036DFD /* Yeelight-Controller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2AA242E1FA85B8000036DFD /* Build configuration list for PBXNativeTarget "Yeelight-Controller" */;
+			buildPhases = (
+				D2AA241C1FA85B7F00036DFD /* Sources */,
+				D2AA241D1FA85B7F00036DFD /* Frameworks */,
+				D2AA241E1FA85B7F00036DFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Yeelight-Controller";
+			productName = "Yeelight-Controller";
+			productReference = D2AA24201FA85B8000036DFD /* Yeelight-Controller.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2AA24181FA85B7F00036DFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Alessandro Pagiaro";
+				TargetAttributes = {
+					D2AA241F1FA85B7F00036DFD = {
+						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D2AA241B1FA85B7F00036DFD /* Build configuration list for PBXProject "Yeelight-Controller" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2AA24171FA85B7F00036DFD;
+			productRefGroup = D2AA24211FA85B8000036DFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AA241F1FA85B7F00036DFD /* Yeelight-Controller */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2AA241E1FA85B7F00036DFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AA244A1FA85B9C00036DFD /* Info.plist in Resources */,
+				D2AA24421FA85B9C00036DFD /* MainViewController.xib in Resources */,
+				D2AA24481FA85B9C00036DFD /* preview.png in Resources */,
+				D2AA24451FA85B9C00036DFD /* Base.lproj in Resources */,
+				D2AA24491FA85B9C00036DFD /* Assets.xcassets in Resources */,
+				D2AA244C1FA85B9C00036DFD /* LICENSE in Resources */,
+				D2AA24441FA85B9C00036DFD /* README.md in Resources */,
+				D2AA24291FA85B8000036DFD /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AA241C1FA85B7F00036DFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AA24431FA85B9C00036DFD /* Yeelight.swift in Sources */,
+				D2AA244E1FA85B9C00036DFD /* Socket.swift in Sources */,
+				D2AA24461FA85B9C00036DFD /* ytcpsocket.c in Sources */,
+				D2AA244D1FA85B9C00036DFD /* TCPClient.swift in Sources */,
+				D2AA244B1FA85B9C00036DFD /* AppDelegate.swift in Sources */,
+				D2AA244F1FA85B9C00036DFD /* Result.swift in Sources */,
+				D2AA24471FA85B9C00036DFD /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D2AA24271FA85B8000036DFD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2AA24281FA85B8000036DFD /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2AA242C1FA85B8000036DFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2AA242D1FA85B8000036DFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		D2AA242F1FA85B8000036DFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Yeelight-Controller/Yeelight_Controller.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Yeelight-Controller/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "it.apagiaro.Yeelight-Controller";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yeelight-Controller/Yeelight-Controller-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		D2AA24301FA85B8000036DFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Yeelight-Controller/Yeelight_Controller.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Yeelight-Controller/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "it.apagiaro.Yeelight-Controller";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Yeelight-Controller/Yeelight-Controller-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2AA241B1FA85B7F00036DFD /* Build configuration list for PBXProject "Yeelight-Controller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2AA242C1FA85B8000036DFD /* Debug */,
+				D2AA242D1FA85B8000036DFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2AA242E1FA85B8000036DFD /* Build configuration list for PBXNativeTarget "Yeelight-Controller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2AA242F1FA85B8000036DFD /* Debug */,
+				D2AA24301FA85B8000036DFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2AA24181FA85B7F00036DFD /* Project object */;
+}
