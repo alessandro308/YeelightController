@@ -17,11 +17,11 @@
 		D2AA24481FA85B9C00036DFD /* preview.png in Resources */ = {isa = PBXBuildFile; fileRef = D2AA24391FA85B9B00036DFD /* preview.png */; };
 		D2AA24491FA85B9C00036DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AA243A1FA85B9B00036DFD /* Assets.xcassets */; };
 		D2AA244A1FA85B9C00036DFD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2AA243B1FA85B9B00036DFD /* Info.plist */; };
-		D2AA244B1FA85B9C00036DFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA243C1FA85B9B00036DFD /* AppDelegate.swift */; };
 		D2AA244C1FA85B9C00036DFD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D2AA243D1FA85B9B00036DFD /* LICENSE */; };
 		D2AA244D1FA85B9C00036DFD /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA243F1FA85B9B00036DFD /* TCPClient.swift */; };
 		D2AA244E1FA85B9C00036DFD /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24401FA85B9B00036DFD /* Socket.swift */; };
 		D2AA244F1FA85B9C00036DFD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24411FA85B9B00036DFD /* Result.swift */; };
+		D2AA24511FA9261F00036DFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AA24501FA9261E00036DFD /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +40,12 @@
 		D2AA24391FA85B9B00036DFD /* preview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview.png; sourceTree = "<group>"; };
 		D2AA243A1FA85B9B00036DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Download/YeelightController-master/Assets.xcassets"; sourceTree = "<group>"; };
 		D2AA243B1FA85B9B00036DFD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../Download/YeelightController-master/Info.plist"; sourceTree = "<group>"; };
-		D2AA243C1FA85B9B00036DFD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../Download/YeelightController-master/AppDelegate.swift"; sourceTree = "<group>"; };
 		D2AA243D1FA85B9B00036DFD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D2AA243E1FA85B9B00036DFD /* YeelightController-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YeelightController-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2AA243F1FA85B9B00036DFD /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
 		D2AA24401FA85B9B00036DFD /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		D2AA24411FA85B9B00036DFD /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		D2AA24501FA9261E00036DFD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 		D2AA24221FA85B8000036DFD /* Yeelight-Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D2AA243C1FA85B9B00036DFD /* AppDelegate.swift */,
+				D2AA24501FA9261E00036DFD /* AppDelegate.swift */,
 				D2AA243A1FA85B9B00036DFD /* Assets.xcassets */,
 				D2AA24351FA85B9A00036DFD /* Base.lproj */,
 				D2AA243B1FA85B9B00036DFD /* Info.plist */,
@@ -184,7 +184,7 @@
 				D2AA244E1FA85B9C00036DFD /* Socket.swift in Sources */,
 				D2AA24461FA85B9C00036DFD /* ytcpsocket.c in Sources */,
 				D2AA244D1FA85B9C00036DFD /* TCPClient.swift in Sources */,
-				D2AA244B1FA85B9C00036DFD /* AppDelegate.swift in Sources */,
+				D2AA24511FA9261F00036DFD /* AppDelegate.swift in Sources */,
 				D2AA244F1FA85B9C00036DFD /* Result.swift in Sources */,
 				D2AA24471FA85B9C00036DFD /* MainViewController.swift in Sources */,
 			);
