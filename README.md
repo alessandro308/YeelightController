@@ -1,3 +1,5 @@
+## This app is under redeveloping phase. Please, wait a new version!
+
 # YeelightController
 Control your Xiaomi Yeelight from your OSX Device
 
