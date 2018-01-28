@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D263F9DB201E50AB00B1959C /* JSONSplitter.c in Sources */ = {isa = PBXBuildFile; fileRef = D263F9D9201E50AB00B1959C /* JSONSplitter.c */; };
 		D2D1AD2B201CE88500A1510A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D1AD2A201CE88500A1510A /* AppDelegate.swift */; };
 		D2D1AD2D201CE88500A1510A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2D1AD2C201CE88500A1510A /* Assets.xcassets */; };
 		D2D1AD3B201CE8F500A1510A /* Socket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D1AD39201CE8BE00A1510A /* Socket.framework */; };
@@ -31,6 +32,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D263F9D8201E50AA00B1959C /* YeelightController2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YeelightController2-Bridging-Header.h"; sourceTree = "<group>"; };
+		D263F9D9201E50AB00B1959C /* JSONSplitter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = JSONSplitter.c; sourceTree = "<group>"; };
+		D263F9DA201E50AB00B1959C /* JSONSplitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONSplitter.h; sourceTree = "<group>"; };
 		D2D1AD27201CE88500A1510A /* YeelightController2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YeelightController2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2D1AD2A201CE88500A1510A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2D1AD2C201CE88500A1510A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +85,9 @@
 				D2D1AD32201CE88500A1510A /* YeelightController2.entitlements */,
 				D2D1AD5C201D4FB000A1510A /* Window.swift */,
 				D2D1AD5D201D4FB000A1510A /* Window.xib */,
+				D263F9D9201E50AB00B1959C /* JSONSplitter.c */,
+				D263F9DA201E50AB00B1959C /* JSONSplitter.h */,
+				D263F9D8201E50AA00B1959C /* YeelightController2-Bridging-Header.h */,
 			);
 			path = YeelightController2;
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 				TargetAttributes = {
 					D2D1AD26201CE88500A1510A = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -165,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D263F9DB201E50AB00B1959C /* JSONSplitter.c in Sources */,
 				D2D1AD3F201CE91300A1510A /* Yeelight.swift in Sources */,
 				D2D1AD2B201CE88500A1510A /* AppDelegate.swift in Sources */,
 				D2D1AD5E201D4FB000A1510A /* Window.swift in Sources */,
@@ -284,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -294,6 +304,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = apagiaro.it.YeelightController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YeelightController2/YeelightController2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -302,6 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -312,6 +325,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = apagiaro.it.YeelightController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "YeelightController2/YeelightController2-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

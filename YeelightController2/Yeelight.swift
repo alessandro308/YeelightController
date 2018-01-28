@@ -143,16 +143,21 @@ class Yeelight {
          TODO:
          Here there is a problem. The bulb reply each command sent with an ack message as `{"id":2, "result":["ok"]}`
          Moreover, because the connection remains opened, the bulb send also another message that is read with the next message (i.e. when the read is called again) and this is a notification message as `{"method":"props","params":{"bright":66}}`.
-         The problem is that, when the next read() reads a data, the data are like `{...}{...}` so the JSON parser fails and the nil value is returned.
+         The problem is that, when the next read() reads a data, the data are like `{...}\r\n{...}\r\n` so the JSON parser fails and the nil value is returned.
          So, this code needs to integrate a method to distinguish between a correct reply message {...} and a double JSON message, where one of the two JSON is an repetition and can be ignored. 
         */
         do {
-            try client?.read(into: &data);
+            try client?.read(into: &data); /*Sometimes here only the "bad" JSON in read and this creates
+                                            an error on json c function */
             let s = String(data: data, encoding: String.Encoding.utf8)!
-            print(s)
-            let dict = convertToDictionary(text: s);
-            return dict!
-        } catch(let error){
+            let cs = (s as NSString).utf8String
+            
+            let json_r = json(UnsafeMutablePointer<Int8>(mutating: cs), Int32(s.count))
+            let s1 = String(cString: json_r!);
+            print("STRING CLEANED")
+            print(s1)
+            return convertToDictionary(text: s1)!
+        } catch( _){
             return [:]
         }
     }

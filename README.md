@@ -13,5 +13,5 @@ The new project needs to be integrated with the previous UI.
 In order to use this app, your YeelightDevice needs to be set in Developer Mode. Use your Yeelight App on your smartphone to change this setting.
 
 ### What's new
-The new version use another TCP library, the IBM BlueSocket library, imported using Carthage. This improvement helps to implement the discovery mode to find Yeelight in the network (to be done).
+The new version use another TCP Library, the IBM BlueSocket Library that are simpler to use to implement a discovery protocol. This library is imported using Carthage.
 
