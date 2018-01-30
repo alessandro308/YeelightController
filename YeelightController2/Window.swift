@@ -10,7 +10,7 @@ import Cocoa
 
 class Window: NSWindowController {
     
-    var b = Yeelight(ip: "192.168.1.111")
+    var b = Yeelight()
     @IBOutlet var brightBar: NSSlider!
     
     @IBAction func ToggleBtnClicked(_ sender: Any) {

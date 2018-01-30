@@ -26,8 +26,8 @@ struct Proprieties{
 
 class Yeelight {
     var proprieties : Proprieties = Proprieties();
-    let IP: String;
-    let port : Int;
+    var IP: String;
+    var port : Int;
     var i = 1; //Message ID, increase by one each message sent
     
     var  client : Socket?;
@@ -38,6 +38,7 @@ class Yeelight {
         do{
             client = try Socket.create(); // It creates a inet socket, with stream type and using TCP
             try client?.connect(to: self.IP, port: Int32(self.port))
+            try client?.close()
         } catch (let error){
             print(error)
             print("Error: socket cannot be created or can't connect. Is the bulb connected?")
@@ -45,6 +46,52 @@ class Yeelight {
         self.updateProprieties()
     }
     
+    init(){
+        self.IP = "";
+        self.port = 0;
+        let addr = discover();
+        if(addr != nil){
+            let parts = addr!.split(separator: ":").map(String.init)
+            
+            self.IP = parts.first!
+            self.port = Int(parts.last!)!
+        }
+        print("Bulb found: "+self.IP+":"+String(self.port))
+        self.updateProprieties()
+    }
+    
+    func discover() -> String?{
+        do{
+            let broadcast = try Socket.create(family: Socket.ProtocolFamily.inet, type: Socket.SocketType.datagram, proto: Socket.SocketProtocol.udp)
+            try broadcast.udpBroadcast(enable: true)
+            let discover_message = """
+                M-SEARCH * HTTP/1.1\r\nHOST: 239.255.255.250:1982\r\nMAN: "ssdp:discover"\r\nST: wifi_bulb
+                """
+            let discover_data = discover_message.data(using: String.Encoding.utf8)
+            try broadcast.write(from: discover_data!, to: Socket.createAddress(for: "239.255.255.250", on: 1982)!)
+            
+            var data = Data()
+            try broadcast.setReadTimeout(value: 1000)
+            let r = try broadcast.readDatagram(into: &data);
+            if(r.bytesRead > 0){
+                let s = String(data: data, encoding: String.Encoding.utf8)!
+                let rows = s.split(separator: "\r\n").map(String.init)
+                for s in rows {
+                    if(s.contains("Location")){
+                        return String(s.suffix(19));
+                    }
+                }
+                print(s)
+            }else{
+                print("The bulb not reply. Is it off?")
+            }
+            
+        } catch(let error){
+            print("Unable to create a socket: ")
+            print(error)
+        }
+        return nil;
+    }
     func toggle(){
         sendCmdReply(id: getAndIncr(), method: "toggle", params: [])
         self.proprieties.power = !self.proprieties.power
@@ -62,11 +109,11 @@ class Yeelight {
     }
     
     func switchOn(){
-        sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500])
+        let _ = sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500])
         proprieties.power = true
     }
     func switchOff(){
-        sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500])
+        let _ = sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500])
         proprieties.power = true
     }
     
@@ -74,7 +121,7 @@ class Yeelight {
         if(!self.proprieties.power){
             _ = self.switchOn()
         }
-        sendCmdReply(id: i, method: "set_rgb", params: [r*65536+g*256+b, "smooth", 500])
+        let _ = sendCmdReply(id: i, method: "set_rgb", params: [r*65536+g*256+b, "smooth", 500])
     }
     
     func closeConnection(){
@@ -84,7 +131,13 @@ class Yeelight {
             return;
         }
     }
-    
+    func connect(){
+        do{
+            try client?.connect(to: self.IP, port: Int32(self.port))
+        } catch(let e){
+            print("Cannot connect")
+        }
+    }
     func updateProprieties(){
         let dict = sendCmdReply(id: i, method: "get_prop", params: ["power", "bright", "ct", "rgb", "hue", "sat", "color_mode", "flowing", "delayoff", "flow_params", "music_on", "name"] )
         let res = dict["result"] as! [Any]
@@ -132,31 +185,42 @@ class Yeelight {
         
         let cmd = "{\"id\":\(id),\"method\":\"\(method)\",\"params\":[\(params_string)]}\r\n";
         print(cmd)
+        self.closeConnection()
         do {
+            self.connect()
             try client?.write(from: cmd)
         } catch{
             print("Cannot communicate with the bulb. Writing on socket fails")
         }
         
+        return readReply()
+    }
+    
+    func readReply() -> Dictionary<String, Any>{
         var data = Data()
-         /*
+        /*
          TODO:
          Here there is a problem. The bulb reply each command sent with an ack message as `{"id":2, "result":["ok"]}`
          Moreover, because the connection remains opened, the bulb send also another message that is read with the next message (i.e. when the read is called again) and this is a notification message as `{"method":"props","params":{"bright":66}}`.
          The problem is that, when the next read() reads a data, the data are like `{...}\r\n{...}\r\n` so the JSON parser fails and the nil value is returned.
-         So, this code needs to integrate a method to distinguish between a correct reply message {...} and a double JSON message, where one of the two JSON is an repetition and can be ignored. 
-        */
+         So, this code needs to integrate a method to distinguish between a correct reply message {...} and a double JSON message, where one of the two JSON is an repetition and can be ignored.
+         */
         do {
             try client?.read(into: &data); /*Sometimes here only the "bad" JSON in read and this creates
-                                            an error on json c function */
+             an error on json c function */
             let s = String(data: data, encoding: String.Encoding.utf8)!
             let cs = (s as NSString).utf8String
             
-            let json_r = json(UnsafeMutablePointer<Int8>(mutating: cs), Int32(s.count))
-            let s1 = String(cString: json_r!);
-            print("STRING CLEANED")
-            print(s1)
-            return convertToDictionary(text: s1)!
+            
+            if let json_r = json(UnsafeMutablePointer<Int8>(mutating: cs), Int32(s.count)) {
+                let s1 = String(cString: json_r)
+                print("STRING CLEANED")
+                
+                return convertToDictionary(text: s1)!
+            } else {
+                print("ELSE")
+                return readReply()
+            }
         } catch( _){
             return [:]
         }

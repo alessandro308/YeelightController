@@ -24,6 +24,7 @@ char* json(char* input, int len){
         curr++;
     }
     while(count != 0){
+        printf("%c\n", input[curr]);
         if(input[curr]=='{')
             count++;
         if(input[curr]=='}')
@@ -32,10 +33,15 @@ char* json(char* input, int len){
         curr++;
     }
     if(strstr(s, "props") != NULL){
-        if(len-curr < 2) //Probably there is another JSON to parse
+        if(len-curr > 2){ //Probably there is another to parse
             return NULL;
-        else
+        }
+        else{
+            
             return json(input + curr, len-curr);
+        }
+        
     }
+    s[curr] = '\0';
     return s;
 }
