@@ -171,17 +171,7 @@ class Yeelight {
     }
     
     func sendCmdReply(id: Int, method: String, params: [Any]) -> Dictionary<String, Any>{
-        var params_string = "";
-        for p in params {
-            if let n = p as? Int{
-                params_string = params_string + "\(n),";
-            } else {
-                params_string = params_string + "\"\(p)\",";
-            }
-        }
-        if(params.count > 0){
-            params_string.remove(at: params_string.index(before: params_string.endIndex)) //Remove last commad
-        }
+        let params_string = joinArrayWithComma(params)
         
         let cmd = "{\"id\":\(id),\"method\":\"\(method)\",\"params\":[\(params_string)]}\r\n";
         print(cmd)
@@ -194,6 +184,12 @@ class Yeelight {
         }
         
         return readReply()
+    }
+    
+    func joinArrayWithComma(_ array:[Any]) -> String {
+        return array.flatMap { (value) -> String? in
+            return (value is Int ? "\(value)" : ("\"\(value)\""))
+            }.joined(separator: ",")
     }
     
     func readReply() -> Dictionary<String, Any>{
