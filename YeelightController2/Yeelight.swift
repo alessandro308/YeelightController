@@ -38,7 +38,7 @@ class Yeelight {
         do{
             client = try Socket.create(); // It creates a inet socket, with stream type and using TCP
             try client?.connect(to: self.IP, port: Int32(self.port))
-            try client?.close()
+            client?.close()
         } catch (let error){
             print(error)
             print("Error: socket cannot be created or can't connect. Is the bulb connected?")
@@ -55,9 +55,17 @@ class Yeelight {
             
             self.IP = parts.first!
             self.port = Int(parts.last!)!
+            do {
+                client = try Socket.create();
+                try client?.connect(to: self.IP, port: Int32(self.port))
+            }catch(let e){
+                print("Error: socket cannot be created"+e.localizedDescription);
+            }
         }
         print("Bulb found: "+self.IP+":"+String(self.port))
-        self.updateProprieties()
+        if(self.IP != ""){
+            self.updateProprieties()
+        }
     }
     
     func discover() -> String?{
@@ -84,6 +92,7 @@ class Yeelight {
                 print(s)
             }else{
                 print("The bulb not reply. Is it off?")
+                return nil;
             }
             
         } catch(let error){
@@ -93,7 +102,7 @@ class Yeelight {
         return nil;
     }
     func toggle(){
-        sendCmdReply(id: getAndIncr(), method: "toggle", params: [])
+        sendCmdReply(id: getAndIncr(), method: "toggle", params: [], hasReply: false)
         self.proprieties.power = !self.proprieties.power
     }
     func setBrightness(value: Int) {
@@ -104,16 +113,16 @@ class Yeelight {
         if(bright > 100){
             bright = 100;
         }
-        let _ = sendCmdReply(id: getAndIncr(), method: "set_bright", params: [bright, "smooth", 500])
+        let _ = sendCmdReply(id: getAndIncr(), method: "set_bright", params: [bright, "smooth", 500], hasReply: false)
         self.proprieties.bright = bright
     }
     
     func switchOn(){
-        let _ = sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500])
+        let _ = sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500], hasReply: false)
         proprieties.power = true
     }
     func switchOff(){
-        let _ = sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500])
+        let _ = sendCmdReply(id: getAndIncr(), method: "set_power", params: ["on", "smooth", 500], hasReply: false)
         proprieties.power = true
     }
     
@@ -121,25 +130,21 @@ class Yeelight {
         if(!self.proprieties.power){
             _ = self.switchOn()
         }
-        let _ = sendCmdReply(id: i, method: "set_rgb", params: [r*65536+g*256+b, "smooth", 500])
+        let _ = sendCmdReply(id: i, method: "set_rgb", params: [r*65536+g*256+b, "smooth", 500], hasReply: false)
     }
     
     func closeConnection(){
-        do {
-            try client?.close()
-        }catch(let _){
-            return;
-        }
+        client?.close()
     }
     func connect(){
         do{
             try client?.connect(to: self.IP, port: Int32(self.port))
         } catch(let e){
-            print("Cannot connect")
+            print("Cannot connect - "+e.localizedDescription);
         }
     }
     func updateProprieties(){
-        let dict = sendCmdReply(id: i, method: "get_prop", params: ["power", "bright", "ct", "rgb", "hue", "sat", "color_mode", "flowing", "delayoff", "flow_params", "music_on", "name"] )
+        let dict = sendCmdReply(id: i, method: "get_prop", params: ["power", "bright", "ct", "rgb", "hue", "sat", "color_mode", "flowing", "delayoff", "flow_params", "music_on", "name"], hasReply: true)
         let res = dict["result"] as! [Any]
         if(res[0] as! String == "on"){
             proprieties.power = true
@@ -170,20 +175,22 @@ class Yeelight {
         return nil
     }
     
-    func sendCmdReply(id: Int, method: String, params: [Any]) -> Dictionary<String, Any>{
+    func sendCmdReply(id: Int, method: String, params: [Any], hasReply: Bool) -> Dictionary<String, Any>{
         let params_string = joinArrayWithComma(params)
         
         let cmd = "{\"id\":\(id),\"method\":\"\(method)\",\"params\":[\(params_string)]}\r\n";
-        print(cmd)
-        self.closeConnection()
+        print("SENDING: "+cmd)
         do {
-            self.connect()
             try client?.write(from: cmd)
         } catch{
             print("Cannot communicate with the bulb. Writing on socket fails")
         }
         
-        return readReply()
+        if(hasReply){
+            return readReply()
+        } else {
+            return readReply();
+        }
     }
     
     func joinArrayWithComma(_ array:[Any]) -> String {
@@ -206,15 +213,19 @@ class Yeelight {
              an error on json c function */
             let s = String(data: data, encoding: String.Encoding.utf8)!
             let cs = (s as NSString).utf8String
-            
-            
-            if let json_r = json(UnsafeMutablePointer<Int8>(mutating: cs), Int32(s.count)) {
+            print("REPLY: "+s);
+            if let json_r = get_one_json(UnsafeMutablePointer<Int8>(mutating: cs), Int32(s.count)) {
                 let s1 = String(cString: json_r)
                 print("STRING CLEANED")
+                print(s1)
                 
-                return convertToDictionary(text: s1)!
+                let d = convertToDictionary(text: s1)
+                if(d == nil){
+                    return [:];
+                } else {
+                    return d!;
+                }
             } else {
-                print("ELSE")
                 return readReply()
             }
         } catch( _){

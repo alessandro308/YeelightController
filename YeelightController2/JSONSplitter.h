@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-char* json(char* input, int len);
+char* get_one_json(char* input, int len);
 
 #endif /* JSONSplitter_h */
